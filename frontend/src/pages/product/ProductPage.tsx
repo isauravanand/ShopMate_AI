@@ -42,8 +42,16 @@ export default function ProductPage() {
         ) : productInfo ? (
           <>
             <aside className="w-full max-w-[600px] h-[600px]">
-              <figure>
-                <img src={AWS_S3_BASE_URL + productInfo.image_url}></img>
+              <figure className="w-full h-full">
+                <img
+                  className="w-full h-full object-cover rounded-lg shadow-sm"
+                  src={
+                    productInfo.image_url?.startsWith("http")
+                      ? productInfo.image_url
+                      : (AWS_S3_BASE_URL || "") + productInfo.image_url
+                  }
+                  alt={productInfo.product_name}
+                />
               </figure>
             </aside>
             <section

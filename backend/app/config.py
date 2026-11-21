@@ -6,9 +6,9 @@ load_dotenv()
 DATABASE = {
     'dialect': 'postgresql',
     'driver': 'psycopg2',
-    'username': os.getenv('POSTGRES_USER'),
-    'password': os.getenv('POSTGRES_PASSWORD'),
-    'host': os.getenv('POSTGRES_HOST'),
-    'port': '5432',  # default port for PostgreSQL
-    'database': os.getenv('POSTGRES_DB'),
+    'username': os.getenv('POSTGRES_USER', 'postgres'),
+    'password': os.getenv('POSTGRES_PASSWORD', 'postgres'),
+    'host': os.getenv('POSTGRES_HOST', 'localhost'),
+    'port': os.getenv('POSTGRES_PORT', '5432'),
+    'database': os.getenv('POSTGRES_DB', 'shopmate_db'),
 }

@@ -22,10 +22,10 @@ function App() {
   return (
     <div className="App">
       <CartContext.Provider value={{cart, setCart}}>
-        <Navigation />
         <BrowserRouter>
+          <Navigation />
           <Routes>
-            <Route path="/" element={<></>}></Route>
+            <Route path="/" element={<Products />}></Route>
             <Route path="/register" element={<Register />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/products" element={<Products />}></Route>

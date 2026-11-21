@@ -12,6 +12,12 @@ import { AWS_S3_BASE_URL } from "../../../../constants";
 
 
 export default function ProductCard({ product }: any) {
+  const imageUrl = product?.image_url
+    ? product.image_url.startsWith("http")
+      ? product.image_url
+      : (AWS_S3_BASE_URL || "") + product.image_url
+    : "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500";
+
   return (
     <Card
       variant="outlined"
@@ -19,9 +25,9 @@ export default function ProductCard({ product }: any) {
     >
       <CardActionArea href={`/products/${product.slug}`}>
         <CardMedia
-          sx={{ height: 200 }}
-          image={AWS_S3_BASE_URL + product.image_url}
-          title="green iguana"
+          sx={{ height: 200, objectFit: "cover" }}
+          image={imageUrl}
+          title={product.product_name}
         />
         <CardContent>
           <Typography variant="h5" fontSize={20} component="div">
